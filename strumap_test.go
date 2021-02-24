@@ -203,7 +203,7 @@ func TestConvert(t *testing.T) {
 	}
 }
 
-func TestConvertCamelCase(t *testing.T) {
+func TestConvertSnakeCase(t *testing.T) {
 	type args struct {
 		s interface{}
 	}
@@ -231,7 +231,7 @@ func TestConvertCamelCase(t *testing.T) {
 	}
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			gotMap, gotErr := ConvertCamelCase(tc.args.s)
+			gotMap, gotErr := ConvertSnakeCase(tc.args.s)
 			if gotErr != tc.wantErr {
 				t.Errorf("Convert() \n\t got error: %v \n\t want error: %v", gotErr, tc.wantErr)
 				return

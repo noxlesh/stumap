@@ -65,15 +65,15 @@ func convert(s interface{}, c wordCase) (Map, error) {
 }
 
 func Convert(s interface{}) (Map, error) {
-	return convert(s, snakeCase)
-}
-
-func ConvertCamelCase(s interface{}) (Map, error) {
 	return convert(s, camelCase)
 }
 
+func ConvertSnakeCase(s interface{}) (Map, error) {
+	return convert(s, snakeCase)
+}
+
 func convCase(i string, c wordCase) string {
-	if c == snakeCase {
+	if c == camelCase {
 		return i
 	} else {
 		var buf bytes.Buffer
