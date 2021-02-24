@@ -41,7 +41,7 @@ func TestConvert(t *testing.T) {
 	cases := []struct {
 		name    string
 		args    args
-		wantMap Map
+		wantMap map[string]interface{}
 		wantErr error
 	}{
 		{
@@ -77,7 +77,7 @@ func TestConvert(t *testing.T) {
 					Field: "field",
 				},
 			},
-			wantMap: Map{
+			wantMap: map[string]interface{}{
 				"Field": "field",
 			},
 			wantErr: nil,
@@ -91,7 +91,7 @@ func TestConvert(t *testing.T) {
 					FieldOf: "field",
 				},
 			},
-			wantMap: Map{
+			wantMap: map[string]interface{}{
 				"FieldOf": "field",
 			},
 			wantErr: nil,
@@ -105,7 +105,7 @@ func TestConvert(t *testing.T) {
 					field: "field",
 				},
 			},
-			wantMap: Map{},
+			wantMap: map[string]interface{}{},
 			wantErr: nil,
 		},
 		{
@@ -121,8 +121,8 @@ func TestConvert(t *testing.T) {
 					}{Str: "field"},
 				},
 			},
-			wantMap: Map{
-				"Field": Map{
+			wantMap: map[string]interface{}{
+				"Field": map[string]interface{}{
 					"Str": "field",
 				},
 			},
@@ -141,8 +141,8 @@ func TestConvert(t *testing.T) {
 					}{Str: "field"},
 				},
 			},
-			wantMap: Map{
-				"Field": Map{
+			wantMap: map[string]interface{}{
+				"Field": map[string]interface{}{
 					"Str": "field",
 				},
 			},
@@ -161,8 +161,8 @@ func TestConvert(t *testing.T) {
 					}{Str: nil},
 				},
 			},
-			wantMap: Map{
-				"Field": Map{
+			wantMap: map[string]interface{}{
+				"Field": map[string]interface{}{
 					"Str": (*int)(nil),
 				},
 			},
@@ -181,7 +181,7 @@ func TestConvert(t *testing.T) {
 					Slice:   []string{"asf", "cde", "dsdsdsdosdsdosjsdklj"},
 				},
 			},
-			wantMap: Map{
+			wantMap: map[string]interface{}{
 				"TestPtr": 1,
 				"Abc":     "abc",
 				"Slice":   []string{"asf", "cde", "dsdsdsdosdsdosjsdklj"},
@@ -210,7 +210,7 @@ func TestConvertSnakeCase(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		wantMap Map
+		wantMap map[string]interface{}
 		wantErr error
 	}{
 
@@ -223,7 +223,7 @@ func TestConvertSnakeCase(t *testing.T) {
 					FieldOf: "field",
 				},
 			},
-			wantMap: Map{
+			wantMap: map[string]interface{}{
 				"field_of": "field",
 			},
 			wantErr: nil,

@@ -7,8 +7,7 @@ import (
 )
 
 type (
-	Map      map[string]interface{}
-	iterFn   func(reflect.Value, iterFn) Map
+	iterFn   func(reflect.Value, iterFn) map[string]interface{}
 	wordCase int
 )
 
@@ -22,8 +21,8 @@ var (
 	ErrNotStruct   = errors.New("an input argument doesn't represent a struct")
 )
 
-func convert(s interface{}, c wordCase) (Map, error) {
-	var iter = func(v reflect.Value, recFn iterFn) Map {
+func convert(s interface{}, c wordCase) (map[string]interface{}, error) {
+	var iter = func(v reflect.Value, recFn iterFn) map[string]interface{} {
 		a := map[string]interface{}{}
 		for i := 0; i < v.NumField(); i++ {
 			t := v.Type()
@@ -64,11 +63,11 @@ func convert(s interface{}, c wordCase) (Map, error) {
 	return iter(v, iter), nil
 }
 
-func Convert(s interface{}) (Map, error) {
+func Convert(s interface{}) (map[string]interface{}, error) {
 	return convert(s, camelCase)
 }
 
-func ConvertSnakeCase(s interface{}) (Map, error) {
+func ConvertSnakeCase(s interface{}) (map[string]interface{}, error) {
 	return convert(s, snakeCase)
 }
 
